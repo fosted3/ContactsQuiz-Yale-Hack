@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.view.View;
+import android.content.Intent;
 
 public class Main extends Activity {
 
@@ -60,6 +62,11 @@ public class Main extends Activity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
+    }
+    public void check(View view)
+    {
+        //Intent intent = new Intent(this, DisplayMessageActivity.class);
+
     }
 
 }
