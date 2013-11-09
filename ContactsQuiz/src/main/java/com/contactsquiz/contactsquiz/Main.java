@@ -2,8 +2,10 @@ package com.contactsquiz.contactsquiz;
 
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -33,6 +35,9 @@ import android.telephony.TelephonyManager;
 import android.support.v4.app.DialogFragment;
 
 public class Main extends Activity {
+
+    List<Person> a;
+    int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,15 +95,37 @@ public class Main extends Activity {
     }
     public void displaycontacts(){
 
-        List<Person> a = getContactList();
-        for (int i=0; i < a.size(); i++){
-            //alert
-            Log.v("value:", a.get(i).getName());
-            //prompt
-            //wait for user
-            //on response continue
-            //return correct/false in background
-        }
+        a = getContactList();
+        i=0;
+
+        RecursiveNancy();
+
+
+    }
+
+    public void RecursiveNancy(){
+        i++;
+        new AlertDialog.Builder(this)
+                .setTitle(a.get(i).getName())
+                .setMessage("Which one is correct?")
+                .setPositiveButton(a.get(i).getPhoneNum(), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(i < a.size()){
+                        RecursiveNancy();
+
+                        }
+                    }
+                })
+                .setNegativeButton("(510)-786-5544", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(i < a.size()){
+                        RecursiveNancy();
+
+                        }
+                    }
+                })
+                .show();
+
 
     }
     public List<Person> getContactList(){
@@ -209,3 +236,4 @@ String sortOrder = ContactsContract.Contacts.DISPLAY_NAME +
 return managedQuery(uri, projection, selection, selectionArgs, sortOrder);
 }*/
 }
+
