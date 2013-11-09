@@ -20,6 +20,8 @@
         android:text="Get Contacts"
         android:id="@+id/button"
         android:layout_alignTop="@+id/textView"
-        android:layout_toRightOf="@+id/textView" />
+        android:layout_toRightOf="@+id/textView"
+        android:onClick="nextPage"
+        />
 
 </RelativeLayout>

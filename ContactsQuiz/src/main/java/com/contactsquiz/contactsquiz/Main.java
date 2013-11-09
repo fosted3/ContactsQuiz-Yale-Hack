@@ -68,5 +68,9 @@ public class Main extends Activity {
         //Intent intent = new Intent(this, DisplayMessageActivity.class);
 
     }
+    public void nextPage(View view)
+    {
+        setContentView(R.layout.activity_main);
+    }
 
 }
