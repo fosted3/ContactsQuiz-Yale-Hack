@@ -82,11 +82,6 @@ public class Main extends Activity {
             return rootView;
         }
     }
-    public void check(View view)
-    {
-        //Intent intent = new Intent(this, DisplayMessageActivity.class);
-
-    }
     public void nextPage(View view)
     {
         setContentView(R.layout.activity_main);
