@@ -49,7 +49,7 @@ public class Main extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -77,15 +77,10 @@ public class Main extends Activity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
-    }
-    public void check(View view)
-    {
-        //Intent intent = new Intent(this, DisplayMessageActivity.class);
-
     }
     public void nextPage(View view)
     {
@@ -149,9 +144,9 @@ public class Main extends Activity {
                             TelephonyManager mTelephonyMgr;
                             mTelephonyMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
                             //if (!mTelephonyMgr.getLine1Number().contains(aContact.getPhoneNum()))
-                        //    {
-                                contactList.add(aContact);
-                        //    }
+                            // {
+                            contactList.add(aContact);
+                            // }
                         }
                     }
                 }
@@ -183,34 +178,34 @@ public class Main extends Activity {
             myNumber = number;
         }
     }
-/*    public void displaycontacts()
-    {
-    Cursor cur = getContacts();
-    cur.moveToFirst();
-     if(!cur.isAfterLast())
-    {
-        do{
-            String entry = cur.getString(cur.getColumnIndex(KEY_ENTRY));
-            Log.v("value:", entry);
-            cur.moveToNext();
-        }while(!cur.isAfterLast());
-    }
-
-  //  list;
+/* public void displaycontacts()
+{
+Cursor cur = getContacts();
+cur.moveToFirst();
+if(!cur.isAfterLast())
+{
+do{
+String entry = cur.getString(cur.getColumnIndex(KEY_ENTRY));
+Log.v("value:", entry);
+cur.moveToNext();
+}while(!cur.isAfterLast());
 }
 
-    private Cursor getContacts() {
-        // Run query
-        Uri uri = ContactsContract.Contacts.CONTENT_STREQUENT_URI;
+// list;
+}
 
-        String[] projection =
-                new String[]{ ContactsContract.Contacts._ID,
-                        ContactsContract.Contacts.DISPLAY_NAME };
-        String selection = null;
-        String[] selectionArgs = null;
-        String sortOrder = ContactsContract.Contacts.DISPLAY_NAME +
-                " COLLATE LOCALIZED ASC";
-        //noinspection deprecation
-        return managedQuery(uri, projection, selection, selectionArgs, sortOrder);
-    }*/
+private Cursor getContacts() {
+// Run query
+Uri uri = ContactsContract.Contacts.CONTENT_STREQUENT_URI;
+
+String[] projection =
+new String[]{ ContactsContract.Contacts._ID,
+ContactsContract.Contacts.DISPLAY_NAME };
+String selection = null;
+String[] selectionArgs = null;
+String sortOrder = ContactsContract.Contacts.DISPLAY_NAME +
+" COLLATE LOCALIZED ASC";
+//noinspection deprecation
+return managedQuery(uri, projection, selection, selectionArgs, sortOrder);
+}*/
 }
