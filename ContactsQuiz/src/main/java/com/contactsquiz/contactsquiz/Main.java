@@ -1,44 +1,32 @@
 package com.contactsquiz.contactsquiz;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.util.Log;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.PhoneLookup;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.database.Cursor;
-//import android.app.LoaderManager.LoaderCallbacks;
-import android.provider.ContactsContract;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.os.Build;
-import android.view.View;
-import android.content.Intent;
-import android.widget.SimpleCursorAdapter;
-import android.net.Uri;
+
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import android.provider.ContactsContract.PhoneLookup;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.provider.ContactsContract.Data;
-import android.telephony.TelephonyManager;
-import android.support.v4.app.DialogFragment;
+import java.util.Random;
 
 public class Main extends Activity {
 
     List<Person> a;
     int i;
-
+    String rand;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +38,14 @@ public class Main extends Activity {
                     .commit();
         }
     }
-
+        public String getRand() {
+        int maximum = 999999999;
+        int rand = (int)(Math.random()*maximum);
+        String str = Integer.toString(rand);
+        while (str.length() < 10)
+        { str = "0" + str; }
+        return "+1 " + str.substring(0, 3) + "-" + str.substring(3, 6) + " - " + str.substring(6);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,10 +111,11 @@ public class Main extends Activity {
                         }
                     }
                 })
-                .setNegativeButton("(510)-786-5544", new DialogInterface.OnClickListener() {
+
+                .setNegativeButton(getRand(), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        if(i < a.size()){
-                        RecursiveNancy();
+                        if (i < a.size()) {
+                            RecursiveNancy();
 
                         }
                     }
@@ -168,12 +164,8 @@ public class Main extends Activity {
                         {
                             aContact.setPhoneNum(phone.getString(numberFieldColumnIndex));
                             phone.moveToNext();
-                            TelephonyManager mTelephonyMgr;
-                            mTelephonyMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-                            //if (!mTelephonyMgr.getLine1Number().contains(aContact.getPhoneNum()))
-                            // {
                             contactList.add(aContact);
-                            // }
+
                         }
                     }
                 }
@@ -205,35 +197,5 @@ public class Main extends Activity {
             myNumber = number;
         }
     }
-/* public void displaycontacts()
-{
-Cursor cur = getContacts();
-cur.moveToFirst();
-if(!cur.isAfterLast())
-{
-do{
-String entry = cur.getString(cur.getColumnIndex(KEY_ENTRY));
-Log.v("value:", entry);
-cur.moveToNext();
-}while(!cur.isAfterLast());
-}
-
-// list;
-}
-
-private Cursor getContacts() {
-// Run query
-Uri uri = ContactsContract.Contacts.CONTENT_STREQUENT_URI;
-
-String[] projection =
-new String[]{ ContactsContract.Contacts._ID,
-ContactsContract.Contacts.DISPLAY_NAME };
-String selection = null;
-String[] selectionArgs = null;
-String sortOrder = ContactsContract.Contacts.DISPLAY_NAME +
-" COLLATE LOCALIZED ASC";
-//noinspection deprecation
-return managedQuery(uri, projection, selection, selectionArgs, sortOrder);
-}*/
 }
 
