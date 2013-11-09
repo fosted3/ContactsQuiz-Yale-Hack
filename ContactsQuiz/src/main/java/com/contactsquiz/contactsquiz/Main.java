@@ -30,7 +30,7 @@ import android.provider.ContactsContract.PhoneLookup;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Data;
 import android.telephony.TelephonyManager;
-
+import android.support.v4.app.DialogFragment;
 
 public class Main extends Activity {
 
@@ -90,13 +90,14 @@ public class Main extends Activity {
     public void nextPage(View view)
     {
         setContentView(R.layout.activity_main);
+
         displaycontacts();
     }
     public void displaycontacts(){
 
         List<Person> a = getContactList();
         for (int i=0; i < a.size(); i++){
-            //allert
+            //alert
             Log.v("value:", a.get(i).getName());
             //prompt
             //wait for user

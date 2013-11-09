@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ContactsQuiz</string>
+    <string name="app_name">The Contact Game</string>
     <string name="hello_world">Hey Jake</string>
     <string name="action_settings">Settings</string>
+    <string name="Title">A memory Game</string>
+    <string name="Description">How many numbers do you still remember by heart? What happens if you lose your phone in a dangerous place, foreign country, or anywhere where it\'s hard to find help? Will you wish you had memorized some of your most critical numbers? Take this Quiz to learn your most contacted numbers by heart, just in case while improving your memory.</string>
+    <string name="Button">Start The Game</string>
 
 </resources>
