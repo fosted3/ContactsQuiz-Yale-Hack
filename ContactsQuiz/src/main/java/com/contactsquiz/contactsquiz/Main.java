@@ -3,7 +3,6 @@ package com.contactsquiz.contactsquiz;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
@@ -20,13 +19,12 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Main extends Activity {
 
     List<Person> a;
     int i;
-    String rand;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,11 +103,10 @@ public class Main extends Activity {
                 .setMessage("Which one is correct?")
                 .setPositiveButton(a.get(i).getPhoneNum(), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        if(i < a.size()){
-                        RecursiveNancy();
+                        if (i < a.size()) {
+                            RecursiveNancy();
 
-                        }
-                    }
+                        }                    }
                 })
 
                 .setNegativeButton(getRand(), new DialogInterface.OnClickListener() {
@@ -121,6 +118,7 @@ public class Main extends Activity {
                     }
                 })
                 .show();
+
 
 
     }
